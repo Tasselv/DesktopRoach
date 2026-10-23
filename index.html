@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f4ed" />
+    <meta
+      name="description"
+      content="一个不需要勇气的蟑螂饲养箱。投喂、逗玩，给桌面上的小强一个家。"
+    />
+    <title>小强收容所 · 一点点陪伴，亿点点生命力</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&family=ZCOOL+XiaoWei&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <svg
+      class="svg-library"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <symbol id="i-roach" viewBox="0 0 24 24">
+        <path
+          d="M9 6 6 2m9 4 3-4M7 10 3 8m4 6-4 1m5 3-3 3m12-11 4-2m-4 6 4 1m-5 3 3 3"
+        />
+        <ellipse cx="12" cy="14" rx="5" ry="7" />
+        <path d="M9 8V6a3 3 0 0 1 6 0v2m-3 1v12" />
+      </symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+        />
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24">
+        <path d="M20.7 13A9 9 0 0 1 11 3.3 9 9 0 1 0 20.7 13Z" />
+      </symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24">
+        <path d="M20 3S7 1 5 10s8 14 13 5c2-4 2-12 2-12ZM3 22 15 9" />
+      </symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14" />
+      </symbol>
+      <symbol id="i-food" viewBox="0 0 24 24">
+        <path d="M14 3a4 4 0 0 0 6 6 9 9 0 1 1-6-6Z" />
+        <path
+          d="M8 8h.01M7 14h.01M12 17h.01M14 11h.01"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="i-water" viewBox="0 0 24 24">
+        <path d="M12 3s-7 7.5-7 12a7 7 0 0 0 14 0c0-4.5-7-12-7-12Z" />
+        <path d="M8 15a4 4 0 0 0 4 4" />
+      </symbol>
+      <symbol id="i-ball" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M4 7c9 1 12 4 13 13M9 3c-3 7 3 14 12 11M3 14c6 3 12-3 11-11" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="m3 10 9-7 9 7v10H3V10Z" />
+        <path d="M9 20v-7h6v7" />
+      </symbol>
+      <symbol id="i-brush" viewBox="0 0 24 24">
+        <path d="m14 12 6-9 2 2-8 8M8 10l8 6-6 6-8-6 6-6Zm-3 6 5 4m-2-7 5 4" />
+      </symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24">
+        <path
+          d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"
+        />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14m-6-6 6 6-6 6" />
+      </symbol>
+      <symbol id="i-expand" viewBox="0 0 24 24">
+        <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="i-info" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 11v6m0-10h.01" />
+      </symbol>
+      <symbol id="i-volume" viewBox="0 0 24 24">
+        <path
+          d="m11 4-6 5H2v6h3l6 5V4Zm4 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"
+        />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </symbol>
+    </svg>
+
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="小强收容所首页"
+        ><span class="brand-mark"
+          ><svg><use href="#i-roach" /></svg></span
+        ><span
+          >小强收容所<span class="brand-en">THE LITTLE ROACH CLUB</span></span
+        ></a
+      >
+      <nav class="header-nav" aria-label="主导航">
+        <span class="nav-active">我的桌面</span
+        ><button id="guide-button">饲养指南 <span>↗</span></button>
+      </nav>
+      <div class="header-right">
+        <span class="live-dot"></span
+        ><span class="header-caption">小生命，大陪伴</span
+        ><span class="avatar">Q<span></span></span>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-heading">
+        <div>
+          <div class="eyebrow"><span></span> YOUR TINY ROOMMATE</div>
+          <h1>给小强，留个位置<span class="heading-spark">✳</span></h1>
+          <p>不用铲屎，不用遛弯。只需要一点点面包屑，和你的偏爱。</p>
+        </div>
+        <div class="wallet">
+          <span class="coin">✦</span
+          ><span><strong id="coins">120</strong><small>小强币</small></span
+          ><button
+            id="daily-gift"
+            title="领取每日补给"
+            aria-label="领取每日补给"
+          >
+            <svg><use href="#i-plus" /></svg>
+          </button>
+        </div>
+      </section>
+
+      <div class="dashboard">
+        <aside class="sidebar">
+          <section class="pet-card">
+            <div class="card-topline">
+              <span><span class="live-dot"></span> 我的室友</span
+              ><span class="pet-number">NO. 001</span>
+            </div>
+            <div class="pet-portrait">
+              <span class="portrait-orbit orbit-one"></span
+              ><span class="portrait-orbit orbit-two"></span
+              ><span class="portrait-spark">✧</span
+              ><canvas
+                id="portrait"
+                width="360"
+                height="220"
+                aria-label="阿强的肖像"
+              ></canvas
+              ><span class="portrait-label">小小的，也很努力</span>
+            </div>
+            <div class="pet-name-row">
+              <div>
+                <h2 id="pet-name">阿强</h2>
+                <button
+                  id="rename-button"
+                  aria-label="给小强改名"
+                  title="给小强改名"
+                >
+                  ✎
+                </button>
+              </div>
+              <span class="level">LV.<b id="level">1</b> 新生小强</span>
+            </div>
+            <p class="pet-bio">
+              美洲大蠊 · 乐观派 · <span id="pet-age">刚刚入住</span>
+            </p>
+            <div class="pet-metrics">
+              <div class="metric">
+                <span
+                  ><svg><use href="#i-food" /></svg> 饱食度</span
+                >
+                <div class="meter"><i id="hunger-bar"></i></div>
+                <b id="hunger-text">78</b>
+              </div>
+              <div class="metric">
+                <span
+                  ><svg><use href="#i-heart" /></svg> 快乐值</span
+                >
+                <div class="meter"><i id="happy-bar"></i></div>
+                <b id="happy-text">86</b>
+              </div>
+              <div class="metric">
+                <span
+                  ><svg><use href="#i-leaf" /></svg> 活力值</span
+                >
+                <div class="meter"><i id="energy-bar"></i></div>
+                <b id="energy-text">92</b>
+              </div>
+            </div>
+            <div class="pet-thought">
+              <span>“</span>
+              <p id="pet-thought">这里的房租，是面包屑吗？</p>
+              <span>”</span>
+            </div>
+          </section>
+
+          <section class="mission-card">
+            <div class="section-label">
+              <h3>今日小事</h3>
+              <span id="mission-progress">0 / 3</span>
+            </div>
+            <p>平凡的小事，也值得一起完成。</p>
+            <button class="mission" data-mission="feed">
+              <span class="task-check"></span><span>请小强吃顿好的</span
+              ><small>+15 <span>✦</span></small></button
+            ><button class="mission" data-mission="play">
+              <span class="task-check"></span><span>陪它玩一会儿</span
+              ><small>+15 <span>✦</span></small></button
+            ><button class="mission" data-mission="clean">
+              <span class="task-check"></span><span>收拾一下小天地</span
+              ><small>+10 <span>✦</span></small>
+            </button>
+          </section>
+
+          <button class="adopt-button" id="adopt-button">
+            <span class="adopt-icon"
+              ><svg><use href="#i-plus" /></svg></span
+            ><span
+              ><b>再添一位室友</b><small>热闹一点，生活有趣一点</small></span
+            ><svg class="arrow"><use href="#i-arrow" /></svg>
+          </button>
+        </aside>
+
+        <div class="main-column">
+          <section
+            class="room-window"
+            id="room-window"
+            aria-label="蟑螂活动桌面"
+          >
+            <div class="window-bar">
+              <div class="window-title">
+                <span class="window-dots"><i></i><i></i><i></i></span
+                ><span
+                  >我的小天地<span class="window-file"> / desktop</span></span
+                >
+              </div>
+              <div class="window-actions">
+                <span
+                  ><span class="live-dot"></span
+                  ><b id="resident-count">1</b> 位住户</span
+                ><button
+                  id="fullscreen-button"
+                  aria-label="全屏显示饲养箱"
+                  title="全屏显示"
+                >
+                  <svg><use href="#i-expand" /></svg>
+                </button>
+              </div>
+            </div>
+            <div class="room" id="room">
+              <div class="room-grain"></div>
+              <div class="room-topline">
+                <span class="room-tag"
+                  ><svg><use href="#i-leaf" /></svg> 自由活动中</span
+                ><button
+                  class="light-button"
+                  id="light-button"
+                  aria-pressed="false"
+                >
+                  <svg><use href="#i-sun" /></svg><span>白天</span
+                  ><i class="toggle"><b></b></i>
+                </button>
+              </div>
+              <div class="notebook">
+                <div class="notebook-binding"></div>
+                <div class="notebook-title">THE LITTLE THINGS</div>
+                <div class="notebook-writing">慢慢来，<br />没人催你长大。</div>
+                <div class="notebook-doodle">
+                  ✽ <span>make yourself at home.</span>
+                </div>
+              </div>
+              <div class="plant" aria-hidden="true">
+                <div class="plant-shadow"></div>
+                <i class="stem"></i><i class="leaf leaf-1"></i
+                ><i class="leaf leaf-2"></i><i class="leaf leaf-3"></i
+                ><i class="leaf leaf-4"></i><i class="leaf leaf-5"></i>
+                <div class="plant-pot"></div>
+              </div>
+              <div class="coffee-ring"></div>
+              <div class="pencil" aria-hidden="true"></div>
+              <div class="sticky-note">
+                <span class="tape"></span
+                ><span class="sticky-title">室友公约</span>
+                <p>不可以吓唬人类<br />面包屑记得分享<br />每天都要好好活着</p>
+                <span class="sticky-heart">♡</span>
+              </div>
+              <div class="shelter" id="shelter">
+                <div class="shelter-roof"></div>
+                <div class="shelter-face">
+                  <span>小强の家</span>
+                  <div class="shelter-door"></div>
+                  <i>101</i>
+                </div>
+                <span class="shelter-caption">一间小屋，无限安全感</span>
+              </div>
+              <div class="food-dish">
+                <div><span>好好吃饭</span><i></i><i></i><i></i><i></i></div>
+              </div>
+              <canvas
+                id="world"
+                aria-label="互动桌面：点击小强打招呼，拖动小强，或选择下方工具后点击桌面。"
+                tabindex="0"
+              ></canvas>
+              <div class="speech-bubble" id="speech">
+                你好呀，新室友！<span>以后请多关照。</span>
+              </div>
+              <div class="placement-hint" id="placement-hint" hidden></div>
+              <div class="room-bottomline">
+                <span
+                  ><i class="live-dot"></i
+                  ><span id="room-status">阿强正在探索新家</span></span
+                ><span class="room-coordinate">HOME, SWEET HOME.</span>
+              </div>
+            </div>
+            <div class="tool-dock">
+              <div class="tool-group">
+                <button class="tool" data-tool="feed">
+                  <span class="tool-icon food-color"
+                    ><svg><use href="#i-food" /></svg></span
+                  ><span>投喂</span><kbd>1</kbd></button
+                ><button class="tool" data-tool="water">
+                  <span class="tool-icon water-color"
+                    ><svg><use href="#i-water" /></svg></span
+                  ><span>加水</span><kbd>2</kbd></button
+                ><span class="dock-divider"></span
+                ><button class="tool" data-tool="play">
+                  <span class="tool-icon play-color"
+                    ><svg><use href="#i-ball" /></svg></span
+                  ><span>逗逗它</span><kbd>3</kbd></button
+                ><button class="tool" data-tool="home">
+                  <span class="tool-icon home-color"
+                    ><svg><use href="#i-home" /></svg></span
+                  ><span>回小窝</span><kbd>4</kbd></button
+                ><button class="tool" data-tool="clean">
+                  <span class="tool-icon clean-color"
+                    ><svg><use href="#i-brush" /></svg></span
+                  ><span>打扫</span><kbd>5</kbd>
+                </button>
+              </div>
+              <div class="dock-tip">
+                <svg><use href="#i-info" /></svg><span>点击小强，打个招呼</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="bottom-cards">
+            <section class="journal-card">
+              <div class="section-label">
+                <h3><span class="journal-dot"></span> 小强日记</h3>
+                <span>那些微不足道的瞬间</span>
+              </div>
+              <div id="journal" class="journal" aria-live="polite">
+                <div class="journal-entry">
+                  <time>刚刚</time>
+                  <p>阿强拖着小小的行李，搬进了你的桌面。</p>
+                  <span>新生活</span>
+                </div>
+              </div>
+            </section>
+            <section class="fact-card">
+              <span class="fact-index">ROACH FACT / 001</span>
+              <h3>它比恐龙，更早见过世界。</h3>
+              <p>
+                蟑螂的祖先在约 3 亿年前就出现了。<br />现在，这位远古来客决定陪你上班。
+              </p>
+              <svg><use href="#i-roach" /></svg>
+            </section>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <span>MADE FOR THE LITTLE, UNLOVED THINGS.</span
+        ><span
+          ><i class="save-dot"></i><span id="save-status">生活已自动保存</span
+          ><span class="footer-divider">/</span
+          ><button id="sound-button" aria-pressed="false">
+            <svg><use href="#i-volume" /></svg><span>声音关</span>
+          </button></span
+        >
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog id="guide-dialog" aria-labelledby="guide-title">
+      <button class="dialog-close" data-close aria-label="关闭">×</button
+      ><span class="dialog-eyebrow">A VERY SMALL FIELD GUIDE</span>
+      <h2 id="guide-title">如何与小强好好相处</h2>
+      <p class="dialog-intro">它不需要很多，只需要你偶尔想起它。</p>
+      <div class="guide-grid">
+        <div>
+          <svg><use href="#i-food" /></svg>
+          <h3>一点点美食</h3>
+          <p>
+            选择投喂，再点击桌面。面包屑每份 5
+            币，小强会自己闻香赶来。水是免费的。
+          </p>
+        </div>
+        <div>
+          <svg><use href="#i-heart" /></svg>
+          <h3>一点点陪伴</h3>
+          <p>
+            点击它打招呼，也可以轻轻拖动。放个 10 币的小球，看它在桌面上追着跑。
+          </p>
+        </div>
+        <div>
+          <svg><use href="#i-home" /></svg>
+          <h3>一点点空间</h3>
+          <p>
+            点击「回小窝」让它休息。切换到夜晚，这个夜行动物会更自在地探索。
+          </p>
+        </div>
+        <div>
+          <svg><use href="#i-leaf" /></svg>
+          <h3>不用担心告别</h3>
+          <p>
+            生活会自动存在这个浏览器。离开时小强会休息，不会饿死。每天还有 50
+            币补给。
+          </p>
+        </div>
+      </div>
+      <button class="primary-button" data-close>
+        知道啦，回家养小强 <svg><use href="#i-arrow" /></svg>
+      </button>
+      <p class="keyboard-note">
+        快捷键 1–5 选择工具 · Esc 取消 · 双击桌面召唤小强
+      </p>
+    </dialog>
+    <dialog id="rename-dialog" aria-labelledby="rename-title">
+      <form id="rename-form">
+        <button class="dialog-close" type="button" data-close aria-label="关闭">
+          ×</button
+        ><span class="dialog-eyebrow">A NAME, A LITTLE CLOSER</span>
+        <h2 id="rename-title">叫它什么好呢？</h2>
+        <label for="name-input">室友的名字</label
+        ><input
+          id="name-input"
+          name="name"
+          maxlength="10"
+          required
+          autocomplete="off"
+          placeholder="最多 10 个字"
+        /><button class="primary-button" type="submit">就叫这个名字</button>
+      </form>
+    </dialog>
+    <dialog id="adopt-dialog" aria-labelledby="adopt-title">
+      <button class="dialog-close" data-close aria-label="关闭">×</button
+      ><span class="dialog-eyebrow">ONE MORE LITTLE FRIEND</span>
+      <h2 id="adopt-title">有个小家伙，想来你家。</h2>
+      <p class="dialog-intro">
+        每位新室友需要 30 小强币的搬家费。<br />桌面最多可以住下 8
+        位，它们会一起分享食物。
+      </p>
+      <div class="adoption-art">
+        <svg><use href="#i-roach" /></svg
+        ><span>带着六条腿，和一颗真诚的心。</span>
+      </div>
+      <button class="primary-button" id="confirm-adopt">
+        欢迎新室友 <span>30 ✦</span>
+      </button>
+    </dialog>
+    <noscript
+      ><div class="noscript">
+        小强需要 JavaScript 才能动起来，请在浏览器中启用 JavaScript。
+      </div></noscript
+    >
+  </body>
+</html>
